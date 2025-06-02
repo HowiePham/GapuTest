@@ -123,6 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &275394657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275394658}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &275394658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275394657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 664428496}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664428496}
   m_Layer: 0
-  m_Name: Level1
+  m_Name: Map1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,15 +355,20 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664428495}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 580774822}
   - {fileID: 1615293105}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 275394658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &669330911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2614734885727637992, guid: df7427aaca7580c4abf1d364eae37664, type: 3}
+  m_PrefabInstance: {fileID: 8856516246099371163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1158351949
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,8 +441,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1615293105}
+  - component: {fileID: 1615293106}
   m_Layer: 0
-  m_Name: MapItem
+  m_Name: MapItemManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,16 +461,30 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 669330911}
   m_Father: {fileID: 664428496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615293106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615293104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f567acaca76bd4e8e8e92efc184b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiddenItemInMap: []
 --- !u!1001 &8856516246099371163
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1615293105}
     m_Modifications:
     - target: {fileID: 2614734885727637992, guid: df7427aaca7580c4abf1d364eae37664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -452,15 +504,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2614734885727637992, guid: df7427aaca7580c4abf1d364eae37664, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2614734885727637992, guid: df7427aaca7580c4abf1d364eae37664, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2614734885727637992, guid: df7427aaca7580c4abf1d364eae37664, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2614734885727637992, guid: df7427aaca7580c4abf1d364eae37664, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -489,5 +541,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1158351950}
   - {fileID: 1590480188}
-  - {fileID: 664428496}
-  - {fileID: 8856516246099371163}
+  - {fileID: 275394658}
