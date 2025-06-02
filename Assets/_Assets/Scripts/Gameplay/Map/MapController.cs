@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MapController : MonoBehaviour
@@ -17,6 +17,11 @@ public class MapController : MonoBehaviour
     {
         if (mapVisual == null) return;
         mapVisual.InitVisual(MapID);
+    }
+
+    public List<HiddenItem> GetAllHiddenItemInMap()
+    {
+        return mapItemManager.GetAllHiddenItemInMap();
     }
 
     public int GetNumberHiddenItemInMap()

@@ -7,10 +7,10 @@ public class MapItemManager : MonoBehaviour
 
     private void Reset()
     {
-        GetAllHiddenItemInMap();
+        InitAllHiddenItemInMap();
     }
 
-    private void GetAllHiddenItemInMap()
+    private void InitAllHiddenItemInMap()
     {
         hiddenItemInMap.Clear();
 
@@ -21,6 +21,11 @@ public class MapItemManager : MonoBehaviour
 
             hiddenItemInMap.Add(hiddenItem);
         }
+    }
+
+    public List<HiddenItem> GetAllHiddenItemInMap()
+    {
+        return hiddenItemInMap;
     }
 
     public int GetNumberHiddenItemInMap()

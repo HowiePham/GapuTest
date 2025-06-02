@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 275394658}
+  - component: {fileID: 275394659}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -155,6 +156,24 @@ Transform:
   - {fileID: 664428496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &275394659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275394657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39909ff7d872dc74183854ca9a67e55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapProgress:
+    totalFoundItem: 0
+    totalItem: 0
+    currentMapProgress: 0
+  mapList:
+  - {fileID: 664428497}
 --- !u!1 &308726528
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +317,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4340064047161194889, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
   m_PrefabInstance: {fileID: 3009392940424289666}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &664428497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2471054228303059290, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
+  m_PrefabInstance: {fileID: 3009392940424289666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f6ae5dda684ec4dafd84a4489faeb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &997754307
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018ee9ca592f8a14294ff7f5c79bf950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 519420031}
 --- !u!1 &1158351949
 GameObject:
   m_ObjectHideFlags: 0

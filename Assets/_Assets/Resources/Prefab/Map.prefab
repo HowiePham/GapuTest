@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapInfo:
-    MapID: 1
+    MapID: 0
   mapItemManager: {fileID: 14214560667687826}
   mapVisual: {fileID: 8659877125444282705}
 --- !u!1 &849286321008632351
