@@ -94,7 +94,7 @@ MonoBehaviour:
   hiddenItemInfo:
     ItemID: 0
     IsFound: 0
-  hiddenItemVisual: {fileID: 5568646383889792906}
+  hiddenItemVisual: {fileID: 3504171742648688363}
 --- !u!1 &9035735510100835947
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6659498682924597744}
   - component: {fileID: 1718265849411974937}
-  - component: {fileID: 5568646383889792906}
+  - component: {fileID: 3504171742648688363}
   m_Layer: 0
   m_Name: ItemVisual
   m_TagString: Untagged
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5568646383889792906
+--- !u!114 &3504171742648688363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,7 +189,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 9035735510100835947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b85f66bbe4049641a477e19a9a4ea78, type: 3}
+  m_Script: {fileID: 11500000, guid: 63f37d07c72e48bc99caabc85cb276a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameVisualType: 0
   visualRenderer: {fileID: 1718265849411974937}

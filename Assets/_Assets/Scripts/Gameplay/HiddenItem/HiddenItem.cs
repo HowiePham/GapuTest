@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class HiddenItem : MonoBehaviour, ISelectable
 {
     [SerializeField] private HiddenItemInfo hiddenItemInfo;
-    [SerializeField] private HiddenItemVisual hiddenItemVisual;
+    [SerializeField] private ObjectVisual hiddenItemVisual;
     public int HiddenItemID => hiddenItemInfo.ItemID;
 
     private void Start()
