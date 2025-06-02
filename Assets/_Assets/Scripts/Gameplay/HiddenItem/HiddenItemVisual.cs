@@ -3,12 +3,12 @@ using UnityEngine;
 public class HiddenItemVisual : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer visualRenderer;
-    private HiddenItemVisualManager HiddenItemVisualManager => SingletonManager.HiddenItemVisualManager;
+    private InGameVisualHandler InGameVisualHandler => SingletonManager.InGameVisualHandler;
 
     public void InitVisual(int hiddenItemID)
     {
         if (visualRenderer == null) return;
-        var templateVisual = HiddenItemVisualManager.GetHiddenItemVisual(hiddenItemID);
+        var templateVisual = InGameVisualHandler.GetVisualSpriteByID(InGameVisualType.HiddenItem, hiddenItemID);
         SetVisualToRenderer(templateVisual);
     }
 

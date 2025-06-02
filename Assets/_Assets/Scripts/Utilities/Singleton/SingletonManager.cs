@@ -1,4 +1,4 @@
 public static class SingletonManager
 {
-    public static HiddenItemVisualManager HiddenItemVisualManager => HiddenItemVisualManager.Instance;
+    public static InGameVisualHandler InGameVisualHandler => InGameVisualHandler.Instance;
 }

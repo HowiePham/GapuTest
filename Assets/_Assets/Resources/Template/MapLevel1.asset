@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22382176bae0459cbfce192fd992e7ae, type: 3}
+  m_Name: MapLevel1
+  m_EditorClassIdentifier: 
+  templateList:
+  - {fileID: 21300000, guid: 47d7c652366afd442b6b5a68d22282ee, type: 3}
+  - {fileID: 21300000, guid: ff11bb082179f4245abffdaa47f6a888, type: 3}
+  - {fileID: 21300000, guid: c8de3631f02389741aff2302afcb592d, type: 3}
+  - {fileID: 21300000, guid: 73f5c13970445ce4a99baed6b5c5e5e8, type: 3}
