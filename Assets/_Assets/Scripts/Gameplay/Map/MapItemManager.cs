@@ -22,4 +22,9 @@ public class MapItemManager : MonoBehaviour
             hiddenItemInMap.Add(hiddenItem);
         }
     }
+
+    public int GetNumberHiddenItemInMap()
+    {
+        return hiddenItemInMap.Count;
+    }
 }

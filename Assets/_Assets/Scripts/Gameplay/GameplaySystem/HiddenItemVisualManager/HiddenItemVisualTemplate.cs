@@ -1,10 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HiddenItemVisualTemplate", menuName = "Data/Template/HiddenItemVisualTemplate", order = 1)]
-public class HiddenItemVisualTemplate : ScriptableObject
+public class HiddenItemVisualTemplate : BaseTemplate<Sprite>
 {
-    [SerializeField] private List<Sprite> hiddenItemVisualTemplateList = new List<Sprite>();
-
-    public List<Sprite> HiddenItemVisualTemplateList => hiddenItemVisualTemplateList;
 }
