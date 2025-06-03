@@ -15,10 +15,6 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     protected override void Init()
     {
         ListenEvent();
-    }
-
-    private void Start()
-    {
         InitSystem();
     }
 
@@ -44,7 +40,7 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 
     private void IncreaseTotalFoundItem(int itemID)
     {
-        mapProgress.IncreaseTotalFoundItem();
+        mapProgress.IncreaseTotalFoundItem(itemID);
     }
 
     private void InitMapList()
@@ -59,6 +55,16 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
         }
     }
 
+    public Dictionary<int, List<HiddenItem>> GetAllItemInMap()
+    {
+        return mapProgress.GetAllItemInMap();
+    }
+
+    public Dictionary<int, int> GetItemList()
+    {
+        return mapProgress.GetItemList();
+    }
+
     public int GetTotalFoundItem()
     {
         return mapProgress.GetTotalFoundItem();
@@ -67,5 +73,15 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     public int GetTotalItem()
     {
         return mapProgress.GetTotalItem();
+    }
+
+    public int GetNumberOfFoundItem(int itemID)
+    {
+        return mapProgress.GetNumberOfFoundItem(itemID);
+    }
+
+    public int GetNumberOfItem(int itemID)
+    {
+        return mapProgress.GetNumberOfItem(itemID);
     }
 }

@@ -8,7 +8,9 @@ public class MapProgress
     [SerializeField] private int totalFoundItem;
     [SerializeField] private int totalItem;
     [SerializeField] private int currentMapProgress;
-    private Dictionary<int, List<HiddenItem>> _allHiddenItemInMap = new Dictionary<int, List<HiddenItem>>();
+    private Dictionary<int, List<HiddenItem>> _allItemInMap = new Dictionary<int, List<HiddenItem>>();
+    private Dictionary<int, int> _numberOfItem = new Dictionary<int, int>();
+    private Dictionary<int, int> _numberOfFoundItem = new Dictionary<int, int>();
 
     public void Init(List<MapController> mapList)
     {
@@ -21,7 +23,7 @@ public class MapProgress
         totalItem = 0;
         for (var i = 0; i <= currentMapProgress; i++)
         {
-            var hiddenItemList = _allHiddenItemInMap[i];
+            var hiddenItemList = _allItemInMap[i];
             totalItem += hiddenItemList.Count;
         }
     }
@@ -30,10 +32,24 @@ public class MapProgress
     {
         foreach (var map in mapList)
         {
-            var mapHiddenItem = map.GetAllHiddenItemInMap();
+            var hiddenItemInMap = map.GetAllHiddenItemInMap();
             var mapID = map.MapID;
 
-            _allHiddenItemInMap[mapID] = mapHiddenItem;
+            _allItemInMap[mapID] = hiddenItemInMap;
+
+            InitNumberOfHiddenItemInMap(hiddenItemInMap);
+        }
+    }
+
+    private void InitNumberOfHiddenItemInMap(List<HiddenItem> hiddenItemInMap)
+    {
+        foreach (var hiddenItem in hiddenItemInMap)
+        {
+            var itemCount = 0;
+            var itemID = hiddenItem.HiddenItemID;
+            if (_numberOfItem.ContainsKey(itemID)) itemCount = _numberOfItem[itemID];
+            itemCount++;
+            _numberOfItem[itemID] = itemCount;
         }
     }
 
@@ -55,9 +71,41 @@ public class MapProgress
         GameEventSystem.Invoke(EventName.MapProgressChanged);
     }
 
-    public void IncreaseTotalFoundItem()
+    public void IncreaseTotalFoundItem(int itemID)
     {
         totalFoundItem++;
+
+        IncreaseFoundItem(itemID);
+        CheckMapProgress();
+    }
+
+    private void IncreaseFoundItem(int itemID)
+    {
+        var itemCount = 0;
+        if (_numberOfFoundItem.ContainsKey(itemID)) itemCount = _numberOfItem[itemID];
+        itemCount++;
+        _numberOfFoundItem[itemID] = itemCount;
+    }
+
+    public Dictionary<int, List<HiddenItem>> GetAllItemInMap()
+    {
+        return _allItemInMap;
+    }
+
+    public Dictionary<int, int> GetItemList()
+    {
+        return _numberOfItem;
+    }
+
+    public int GetNumberOfFoundItem(int itemID)
+    {
+        var firstValue = 0;
+        return _numberOfFoundItem.ContainsKey(itemID) ? _numberOfFoundItem[itemID] : firstValue;
+    }
+
+    public int GetNumberOfItem(int itemID)
+    {
+        return _numberOfItem[itemID];
     }
 
     public int GetTotalFoundItem()

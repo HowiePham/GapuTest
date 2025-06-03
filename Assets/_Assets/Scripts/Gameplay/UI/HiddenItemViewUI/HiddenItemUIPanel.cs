@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +6,7 @@ public class HiddenItemUIPanel : MonoBehaviour
     [SerializeField] private HiddenItemUI hiddenItemUIPrefab;
     [SerializeField] private int testQuantity;
     [SerializeField] private List<HiddenItemUI> hiddenItemUiList = new List<HiddenItemUI>();
+    private MapManager MapManager => SingletonManager.MapManager;
 
     private void Start()
     {
@@ -16,10 +15,12 @@ public class HiddenItemUIPanel : MonoBehaviour
 
     private void InitUI()
     {
+        var allItemInMap = MapManager.GetItemList();
         hiddenItemUiList.Clear();
-        for (int i = 0; i < testQuantity; i++)
+
+        foreach (var item in allItemInMap)
         {
-            var itemID = i;
+            var itemID = item.Key;
             var newHiddenItemUI = NewHiddenItemUI(itemID);
             hiddenItemUiList.Add(newHiddenItemUI);
         }
