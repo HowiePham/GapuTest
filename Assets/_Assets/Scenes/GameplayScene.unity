@@ -807,6 +807,7 @@ MonoBehaviour:
     ToolType: 0
     toolQuantity: 2
   mainCamera: {fileID: 519420031}
+  cameraZoomValue: 1
 --- !u!4 &664428496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4340064047161194889, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}

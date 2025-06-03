@@ -42,4 +42,10 @@ public class GameToolManager : MonoBehaviour
         var gameTool = GetGameTool(toolType);
         return gameTool.GetToolQuantity();
     }
+
+    [ContextMenu("TEST")]
+    public void Test()
+    {
+        UseTool(ToolType.MagnifyingGlass);
+    }
 }

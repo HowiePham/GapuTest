@@ -44,14 +44,13 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     {
         var newMapUnlocked = mapList[mapID];
         EnableMap(newMapUnlocked, true);
-        
+
         mapProgress.UpdateNewMapProgress(newMapUnlocked);
     }
 
-    private void EnableMap(MapController map, bool active)
+    private void EnableMap(MapController map, bool unlock)
     {
-        var mapObj = map.gameObject;
-        mapObj.SetActive(active);
+        map.UnlockMap(unlock);
     }
 
     private void IncreaseTotalFoundItem(int itemID)
@@ -84,6 +83,11 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     public Dictionary<int, int> GetItemList()
     {
         return mapProgress.GetItemList();
+    }
+
+    public int GetCurrentMapProgress()
+    {
+        return mapProgress.GetCurrentMapProgress();
     }
 
     public int GetTotalFoundItem()

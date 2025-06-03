@@ -7,6 +7,7 @@ public class MapController : MonoBehaviour
     [SerializeField] private MapItemManager mapItemManager;
     [SerializeField] private ObjectVisual mapVisual;
     public int MapID => mapInfo.MapID;
+    public bool IsUnlocked => mapInfo.IsUnlocked;
 
     private void Start()
     {
@@ -27,5 +28,16 @@ public class MapController : MonoBehaviour
     public int GetNumberHiddenItemInMap()
     {
         return mapItemManager.GetNumberHiddenItemInMap();
+    }
+
+    public void UnlockMap(bool unlock)
+    {
+        gameObject.SetActive(unlock);
+        SetUnlockedState(unlock);
+    }
+
+    private void SetUnlockedState(bool state)
+    {
+        mapInfo.IsUnlocked = state;
     }
 }
