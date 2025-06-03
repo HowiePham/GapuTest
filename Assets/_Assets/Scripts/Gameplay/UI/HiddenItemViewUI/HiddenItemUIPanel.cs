@@ -5,13 +5,12 @@ public class HiddenItemUIPanel : MonoBehaviour
 {
     [SerializeField] private HiddenItemUI hiddenItemUIPrefab;
     [SerializeField] private int testQuantity;
-    [SerializeField] private List<HiddenItemUI> hiddenItemUIList = new List<HiddenItemUI>();
+    private Dictionary<int, HiddenItemUI> _hiddenItemUIList = new Dictionary<int, HiddenItemUI>();
     private MapManager MapManager => SingletonManager.MapManager;
 
-    private void Start()
+    private void Awake()
     {
         ListenEvent();
-        InitUI();
     }
 
     private void OnDestroy()
@@ -21,37 +20,50 @@ public class HiddenItemUIPanel : MonoBehaviour
 
     private void ListenEvent()
     {
-        GameEventSystem.Subscribe<int>(EventName.UpdatingItemProgress, UpdateHiddenItemUI);
+        GameEventSystem.Subscribe<int>(EventName.ItemProgressUpdated, UpdateHiddenItemUI);
+        GameEventSystem.Subscribe(EventName.MapProgressUpdated, UpdateUI);
     }
 
     private void StopListeningEvent()
     {
-        GameEventSystem.Unsubscribe<int>(EventName.UpdatingItemProgress, UpdateHiddenItemUI);
+        GameEventSystem.Unsubscribe<int>(EventName.ItemProgressUpdated, UpdateHiddenItemUI);
+        GameEventSystem.Unsubscribe(EventName.MapProgressUpdated, UpdateUI);
     }
 
-    private void InitUI()
+    private void UpdateUI()
     {
         var allItemInMap = MapManager.GetItemList();
-        hiddenItemUIList.Clear();
 
         foreach (var item in allItemInMap)
         {
             var itemID = item.Key;
-            var newHiddenItemUI = NewHiddenItemUI(itemID);
-            hiddenItemUIList.Add(newHiddenItemUI);
+
+            if (_hiddenItemUIList.ContainsKey(itemID))
+            {
+                var hiddenItemUI = GetHiddenItemUI(itemID);
+                hiddenItemUI.UpdateItemQuantityText();
+                continue;
+            }
+
+            NewHiddenItemUI(itemID);
         }
     }
 
-    private HiddenItemUI NewHiddenItemUI(int itemID)
+    private void NewHiddenItemUI(int itemID)
     {
         var newItemUI = Instantiate(hiddenItemUIPrefab, transform);
         newItemUI.InitUI(itemID);
-        return newItemUI;
+        _hiddenItemUIList.Add(itemID, newItemUI);
     }
 
     private void UpdateHiddenItemUI(int itemID)
     {
-        var hiddenItemUI = hiddenItemUIList[itemID];
+        var hiddenItemUI = GetHiddenItemUI(itemID);
         hiddenItemUI.UpdateItemQuantityText();
+    }
+
+    private HiddenItemUI GetHiddenItemUI(int itemID)
+    {
+        return !_hiddenItemUIList.ContainsKey(itemID) ? null : _hiddenItemUIList[itemID];
     }
 }

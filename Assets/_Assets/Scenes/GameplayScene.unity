@@ -174,7 +174,7 @@ MonoBehaviour:
   mapProgress:
     totalFoundItem: 0
     totalItem: 0
-    currentMapProgress: 1
+    currentMapProgress: 0
   mapList: []
 --- !u!1 &308726528
 GameObject:
@@ -325,6 +325,10 @@ PrefabInstance:
     - target: {fileID: 281225701260668543, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
       propertyPath: m_Name
       value: Map (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 281225701260668543, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2471054228303059290, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
       propertyPath: mapInfo.MapID
@@ -477,7 +481,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenItemUIPrefab: {fileID: 6815174789277185707, guid: 8cf11e4baf653b34a8ee85a1f7081f28, type: 3}
   testQuantity: 4
-  hiddenItemUIList: []
 --- !u!1 &741695796
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +612,10 @@ PrefabInstance:
     - target: {fileID: 281225701260668543, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
       propertyPath: m_Name
       value: Map (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 281225701260668543, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2471054228303059290, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
       propertyPath: mapInfo.MapID
@@ -808,6 +815,10 @@ PrefabInstance:
     - target: {fileID: 281225701260668543, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
       propertyPath: m_Name
       value: Map (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 281225701260668543, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2471054228303059290, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
       propertyPath: mapInfo.MapID

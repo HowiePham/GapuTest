@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +7,10 @@ public class OverallViewPanel : MonoBehaviour
     [SerializeField] private Text overallText;
     private MapManager MapManager => SingletonManager.MapManager;
 
-    private void Start()
+    private void Awake()
     {
         ListenEvent();
-        UpdateOverviewUI();
+        // UpdateOverviewUI();
     }
 
     private void OnDestroy()
@@ -22,12 +20,14 @@ public class OverallViewPanel : MonoBehaviour
 
     private void ListenEvent()
     {
-        GameEventSystem.Subscribe<int>(EventName.UpdatingItemProgress, UpdateOverviewUI);
+        GameEventSystem.Subscribe<int>(EventName.ItemProgressUpdated, UpdateOverviewUI);
+        GameEventSystem.Subscribe(EventName.MapProgressUpdated, () => UpdateOverviewUI());
     }
 
     private void StopListeningEvent()
     {
-        GameEventSystem.Unsubscribe<int>(EventName.UpdatingItemProgress, UpdateOverviewUI);
+        GameEventSystem.Unsubscribe<int>(EventName.ItemProgressUpdated, UpdateOverviewUI);
+        GameEventSystem.Unsubscribe(EventName.MapProgressUpdated, () => UpdateOverviewUI());
     }
 
     private void UpdateOverviewUI(int itemID = -1)

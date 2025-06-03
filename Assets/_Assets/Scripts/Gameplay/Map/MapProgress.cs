@@ -15,15 +15,29 @@ public class MapProgress
         for (var i = 0; i <= currentMapProgress; i++)
         {
             var map = mapList[i];
-            itemProgress.InitAllHiddenItem(map);
-            UpdateNewTotalItemValue(map);
+            UpdateNewMapProgress(map);
         }
+    }
+
+    public void UpdateNewMapProgress(MapController map)
+    {
+        itemProgress.UpdateAllHiddenItemInMap(map);
+        UpdateNewTotalItemValue(map);
+        InvokeMapProgressUpdated();
     }
 
     private void UpdateNewTotalItemValue(MapController map)
     {
         var hiddenItemList = map.GetAllHiddenItemInMap();
         totalItem += hiddenItemList.Count;
+    }
+
+    public void IncreaseTotalFoundItem(int itemID)
+    {
+        totalFoundItem++;
+        itemProgress.IncreaseFoundItem(itemID);
+
+        CheckMapProgress();
     }
 
     private void CheckMapProgress()
@@ -46,15 +60,12 @@ public class MapProgress
 
     private void InvokeMapProgressChanged()
     {
-        GameEventSystem.Invoke(EventName.MapProgressChanged);
+        GameEventSystem.Invoke(EventName.MapProgressChanged, currentMapProgress);
     }
 
-    public void IncreaseTotalFoundItem(int itemID)
+    private void InvokeMapProgressUpdated()
     {
-        totalFoundItem++;
-
-        itemProgress.IncreaseFoundItem(itemID);
-        CheckMapProgress();
+        GameEventSystem.Invoke(EventName.MapProgressUpdated);
     }
 
     public int GetTotalFoundItem()

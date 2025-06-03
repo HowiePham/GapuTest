@@ -10,6 +10,11 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     protected override void Init()
     {
         ListenEvent();
+        // InitSystem();
+    }
+
+    private void Start()
+    {
         InitSystem();
     }
 
@@ -27,11 +32,27 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     private void ListenEvent()
     {
         GameEventSystem.Subscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
+        GameEventSystem.Subscribe<int>(EventName.MapProgressChanged, UnlockNewMap);
     }
 
     private void StopListeningEvent()
     {
         GameEventSystem.Unsubscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
+        GameEventSystem.Unsubscribe<int>(EventName.MapProgressChanged, UnlockNewMap);
+    }
+
+    private void UnlockNewMap(int mapID)
+    {
+        var newMapUnlocked = mapList[mapID];
+        EnableMap(newMapUnlocked, true);
+        
+        mapProgress.UpdateNewMapProgress(newMapUnlocked);
+    }
+
+    private void EnableMap(MapController map, bool active)
+    {
+        var mapObj = map.gameObject;
+        mapObj.SetActive(active);
     }
 
     private void IncreaseTotalFoundItem(int itemID)
