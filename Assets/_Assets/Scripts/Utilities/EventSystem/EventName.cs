@@ -5,5 +5,8 @@
     MapProgressChanged,
     MapProgressUpdated,
     ItemProgressUpdated,
-    HiddenItemUIUpdated
+    HiddenItemUIUpdated,
+    ReleaseLeftMouse,
+    FirstTouch,
+    HoldingLeftMouse
 }
