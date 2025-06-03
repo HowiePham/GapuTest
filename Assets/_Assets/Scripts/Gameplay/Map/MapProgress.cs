@@ -12,19 +12,18 @@ public class MapProgress
 
     public void Init(List<MapController> mapList)
     {
-        itemProgress.InitAllHiddenItem(mapList);
-        GetNewTotalItem();
-    }
-
-    private void GetNewTotalItem()
-    {
-        totalItem = 0;
-        var allItemInMap = GetAllItemInMap();
         for (var i = 0; i <= currentMapProgress; i++)
         {
-            var hiddenItemList = allItemInMap[i];
-            totalItem += hiddenItemList.Count;
+            var map = mapList[i];
+            itemProgress.InitAllHiddenItem(map);
+            UpdateNewTotalItemValue(map);
         }
+    }
+
+    private void UpdateNewTotalItemValue(MapController map)
+    {
+        var hiddenItemList = map.GetAllHiddenItemInMap();
+        totalItem += hiddenItemList.Count;
     }
 
     private void CheckMapProgress()

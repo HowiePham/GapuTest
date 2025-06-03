@@ -50,22 +50,20 @@ public class ItemProgress
         {
             var itemCount = 0;
             var itemID = hiddenItem.HiddenItemID;
+
             if (_numberOfItem.ContainsKey(itemID)) itemCount = _numberOfItem[itemID];
             itemCount++;
             _numberOfItem[itemID] = itemCount;
         }
     }
 
-    public void InitAllHiddenItem(List<MapController> mapList)
+    public void InitAllHiddenItem(MapController map)
     {
-        foreach (var map in mapList)
-        {
-            var hiddenItemInMap = map.GetAllHiddenItemInMap();
-            var mapID = map.MapID;
+        var hiddenItemInMap = map.GetAllHiddenItemInMap();
+        var mapID = map.MapID;
 
-            _allItemInMap[mapID] = hiddenItemInMap;
+        _allItemInMap[mapID] = hiddenItemInMap;
 
-            InitNumberOfHiddenItemInMap(hiddenItemInMap);
-        }
+        InitNumberOfHiddenItemInMap(hiddenItemInMap);
     }
 }

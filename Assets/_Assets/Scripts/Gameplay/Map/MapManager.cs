@@ -7,11 +7,6 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     [SerializeField] private MapProgress mapProgress;
     [SerializeField] private List<MapController> mapList = new List<MapController>();
 
-    private void Reset()
-    {
-        InitMapList();
-    }
-
     protected override void Init()
     {
         ListenEvent();
@@ -20,6 +15,7 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 
     private void InitSystem()
     {
+        InitMapList();
         mapProgress.Init(mapList);
     }
 
@@ -53,6 +49,11 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 
             mapList.Add(mapController);
         }
+    }
+
+    public MapController GetMapController(int mapID)
+    {
+        return mapList[mapID];
     }
 
     public Dictionary<int, List<HiddenItem>> GetAllItemInMap()
