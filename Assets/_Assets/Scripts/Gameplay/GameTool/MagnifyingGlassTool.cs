@@ -3,9 +3,9 @@
 public class MagnifyingGlassTool : GameTool
 {
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private float cameraZoomValue;
 
     private MapManager MapManager => SingletonManager.MapManager;
+    private CameraManager CameraManager => SingletonManager.CameraManager;
 
     public override void Execute()
     {
@@ -39,6 +39,6 @@ public class MagnifyingGlassTool : GameTool
 
     private void ZoomCamera()
     {
-        mainCamera.orthographicSize = cameraZoomValue;
+        CameraManager.ZoomToMinValue();
     }
 }

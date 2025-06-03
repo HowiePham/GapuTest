@@ -86,4 +86,9 @@ public class CameraLimitHandler : MonoBehaviour
 
         cameraTransform.position = new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z);
     }
+
+    public float GetMinZoomValue()
+    {
+        return minZoomValue;
+    }
 }

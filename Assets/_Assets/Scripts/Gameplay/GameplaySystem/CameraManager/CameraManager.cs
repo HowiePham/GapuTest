@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour
+public class CameraManager : TemporaryMonoSingleton<CameraManager>
 {
-    
+    [SerializeField] private CameraZoomHandler cameraZoomHandler;
+
+    public void ZoomToMinValue()
+    {
+        cameraZoomHandler.ZoomToMinValue();
+    }
 }
