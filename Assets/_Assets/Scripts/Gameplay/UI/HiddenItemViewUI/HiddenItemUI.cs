@@ -14,7 +14,7 @@ public class HiddenItemUI : MonoBehaviour
     {
         hiddenItemInfo.ItemID = itemID;
         SetItemImage();
-        SetItemQuantityText();
+        UpdateItemQuantityText();
     }
 
     private void SetItemImage()
@@ -24,7 +24,7 @@ public class HiddenItemUI : MonoBehaviour
         hiddenItemImage.sprite = visualSprite;
     }
 
-    public void SetItemQuantityText()
+    public void UpdateItemQuantityText()
     {
         var totalItemCount = MapManager.GetNumberOfItem(ItemID);
         var totalFoundItemCount = MapManager.GetNumberOfFoundItem(ItemID);

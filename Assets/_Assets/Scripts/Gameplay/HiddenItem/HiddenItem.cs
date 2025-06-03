@@ -21,5 +21,6 @@ public class HiddenItem : MonoBehaviour, ISelectable
     {
         Debug.Log($"--- (ITEM) Select at item with ID: {HiddenItemID}");
         GameEventSystem.Invoke(EventName.HiddenItemFound, HiddenItemID);
+        gameObject.SetActive(false);
     }
 }

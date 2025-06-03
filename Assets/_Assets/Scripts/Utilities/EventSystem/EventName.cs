@@ -2,5 +2,6 @@
 {
     ClickingLeftMouse,
     HiddenItemFound,
-    MapProgressChanged
+    MapProgressChanged,
+    UpdatingItemProgress
 }

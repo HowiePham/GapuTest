@@ -55,9 +55,14 @@ public class MapProgress
 
     private void CheckMapProgress()
     {
-        if (totalFoundItem < totalItem) return;
+        if (CanIncreaseMapProgress()) return;
 
         IncreaseMapProgress();
+    }
+
+    private bool CanIncreaseMapProgress()
+    {
+        return totalFoundItem < totalItem;
     }
 
     private void IncreaseMapProgress()
@@ -82,9 +87,16 @@ public class MapProgress
     private void IncreaseFoundItem(int itemID)
     {
         var itemCount = 0;
-        if (_numberOfFoundItem.ContainsKey(itemID)) itemCount = _numberOfItem[itemID];
+        if (_numberOfFoundItem.ContainsKey(itemID)) itemCount = _numberOfFoundItem[itemID];
         itemCount++;
         _numberOfFoundItem[itemID] = itemCount;
+
+        InvokeUpdatingItemProgress(itemID);
+    }
+
+    private void InvokeUpdatingItemProgress(int itemID)
+    {
+        GameEventSystem.Invoke(EventName.UpdatingItemProgress, itemID);
     }
 
     public Dictionary<int, List<HiddenItem>> GetAllItemInMap()

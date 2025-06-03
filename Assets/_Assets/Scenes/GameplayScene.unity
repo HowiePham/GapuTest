@@ -420,7 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenItemUIPrefab: {fileID: 6815174789277185707, guid: 8cf11e4baf653b34a8ee85a1f7081f28, type: 3}
   testQuantity: 4
-  hiddenItemUiList: []
+  hiddenItemUIList: []
 --- !u!1 &741695796
 GameObject:
   m_ObjectHideFlags: 0
