@@ -42,6 +42,8 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 
     private void UnlockNewMap(int mapID)
     {
+        if (mapID >= mapList.Count) return;
+
         var newMapUnlocked = mapList[mapID];
         EnableMap(newMapUnlocked, true);
 
