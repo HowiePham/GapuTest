@@ -10,7 +10,6 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     protected override void Init()
     {
         ListenEvent();
-        // InitSystem();
     }
 
     private void Start()
