@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameInteractingSystem : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
+    private GameEffectManager GameEffectManager => SingletonManager.GameEffectManager;
 
     private void Awake()
     {
@@ -38,7 +39,8 @@ public class GameInteractingSystem : MonoBehaviour
         var hitCollider = rayCastHit2D.collider;
         if (hitCollider == null)
         {
-            Debug.Log($"--- (INPUT) Not interact with anything.");
+            // Debug.Log($"--- (INPUT) Not interact with anything.");
+            HandleRedMarkEffect(mouseWorldPoint);
             return;
         }
 
@@ -46,10 +48,16 @@ public class GameInteractingSystem : MonoBehaviour
 
         if (selectableObject == null)
         {
-            Debug.Log($"--- (INPUT) Not interact with anything.");
+            // Debug.Log($"--- (INPUT) Not interact with anything.");
+            HandleRedMarkEffect(mouseWorldPoint);
             return;
         }
 
         selectableObject.Select();
+    }
+
+    private void HandleRedMarkEffect(Vector2 position)
+    {
+        GameEffectManager.CreateEffectAt(GameEffectType.RedMark, position);
     }
 }
