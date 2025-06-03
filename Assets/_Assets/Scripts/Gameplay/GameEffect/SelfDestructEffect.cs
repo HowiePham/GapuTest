@@ -4,6 +4,7 @@ using UnityEngine;
 public class SelfDestructEffect : MonoBehaviour
 {
     [SerializeField] private float destructTime;
+    private PoolingSystem PoolingSystem => SingletonManager.PoolingSystem;
 
     private void OnEnable()
     {
@@ -12,6 +13,6 @@ public class SelfDestructEffect : MonoBehaviour
 
     private void SelfDestruct()
     {
-        Destroy(gameObject);
+        PoolingSystem.ReturnObjectToPool(PoolType.RedMark, gameObject);
     }
 }

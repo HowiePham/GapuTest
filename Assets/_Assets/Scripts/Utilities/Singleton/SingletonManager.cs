@@ -4,4 +4,5 @@ public static class SingletonManager
     public static MapManager MapManager => MapManager.Instance;
     public static CameraManager CameraManager => CameraManager.Instance;
     public static GameEffectManager GameEffectManager => GameEffectManager.Instance;
+    public static PoolingSystem PoolingSystem => PoolingSystem.Instance;
 }

@@ -299,7 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288975c755934e8ca733f70c842ccf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefab: {fileID: 6910716144618941913, guid: a68b847172b031743988c6a11cdd9e60, type: 3}
   gameEffectType: 0
 --- !u!1 &275394657
 GameObject:
@@ -1709,6 +1708,7 @@ Transform:
   - {fileID: 1231235237}
   - {fileID: 351024957}
   - {fileID: 556344422}
+  - {fileID: 1337351545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172122048
@@ -1982,6 +1982,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2614734885727637992, guid: df7427aaca7580c4abf1d364eae37664, type: 3}
   m_PrefabInstance: {fileID: 1325842704}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1337351544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337351545}
+  - component: {fileID: 1337351546}
+  m_Layer: 0
+  m_Name: PoolingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1337351545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337351544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1158351950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1337351546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337351544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3875b4223a2f6684f9562314f1424ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolList:
+  - poolType: 0
+    poolSize: 5
+    objectPrefab: {fileID: 6910716144618941913, guid: a68b847172b031743988c6a11cdd9e60, type: 3}
+    parent: {fileID: 1337351545}
 --- !u!4 &1502983442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5509360503951028046, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
