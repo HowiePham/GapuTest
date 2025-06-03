@@ -12,6 +12,8 @@ public class MapProgress
 
     public void Init(List<MapController> mapList)
     {
+        itemProgress.UpdateAllHiddenItemInMap(mapList);
+
         for (var i = 0; i <= currentMapProgress; i++)
         {
             var map = mapList[i];
@@ -21,7 +23,6 @@ public class MapProgress
 
     public void UpdateNewMapProgress(MapController map)
     {
-        itemProgress.UpdateAllHiddenItemInMap(map);
         UpdateNewTotalItemValue(map);
         InvokeMapProgressUpdated();
     }

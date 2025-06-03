@@ -7,7 +7,7 @@ public class ItemProgress
     private Dictionary<int, List<HiddenItem>> _allItemInMap = new Dictionary<int, List<HiddenItem>>();
     private Dictionary<int, int> _numberOfItem = new Dictionary<int, int>();
     private Dictionary<int, int> _numberOfFoundItem = new Dictionary<int, int>();
-    
+
     public void IncreaseFoundItem(int itemID)
     {
         var itemCount = 0;
@@ -36,16 +36,19 @@ public class ItemProgress
         }
     }
 
-    public void UpdateAllHiddenItemInMap(MapController map)
+    public void UpdateAllHiddenItemInMap(List<MapController> mapList)
     {
-        var hiddenItemInMap = map.GetAllHiddenItemInMap();
-        var mapID = map.MapID;
+        foreach (var map in mapList)
+        {
+            var hiddenItemInMap = map.GetAllHiddenItemInMap();
+            var mapID = map.MapID;
 
-        _allItemInMap[mapID] = hiddenItemInMap;
+            _allItemInMap[mapID] = hiddenItemInMap;
 
-        UpdateNumberOfHiddenItemInMap(hiddenItemInMap);
+            UpdateNumberOfHiddenItemInMap(hiddenItemInMap);
+        }
     }
-    
+
     public Dictionary<int, List<HiddenItem>> GetAllItemInMap()
     {
         return _allItemInMap;
