@@ -13,6 +13,6 @@ public class SelfDestructEffect : MonoBehaviour
 
     private void SelfDestruct()
     {
-        PoolingSystem.ReturnObjectToPool(PoolType.RedMark, gameObject);
+        PoolingSystem.ReturnObjectToPool(PoolType.RedMarkEffect, gameObject);
     }
 }

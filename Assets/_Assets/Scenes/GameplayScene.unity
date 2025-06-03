@@ -2031,6 +2031,10 @@ MonoBehaviour:
     poolSize: 5
     objectPrefab: {fileID: 6910716144618941913, guid: a68b847172b031743988c6a11cdd9e60, type: 3}
     parent: {fileID: 1337351545}
+  - poolType: 1
+    poolSize: 5
+    objectPrefab: {fileID: 818419477002935022, guid: 77a9705f6d486764c88140f37df8b87c, type: 3}
+    parent: {fileID: 1337351545}
 --- !u!4 &1502983442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5509360503951028046, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}

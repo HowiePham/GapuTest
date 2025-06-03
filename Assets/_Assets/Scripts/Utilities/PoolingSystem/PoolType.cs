@@ -1,4 +1,5 @@
 ﻿public enum PoolType
 {
-    RedMark,
+    RedMarkEffect,
+    FoundItemEffect,
 }
