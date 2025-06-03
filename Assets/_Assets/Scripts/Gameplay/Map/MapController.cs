@@ -40,4 +40,9 @@ public class MapController : MonoBehaviour
     {
         mapInfo.IsUnlocked = state;
     }
+
+    public Bounds GetMapBounds()
+    {
+        return mapVisual.GetVisualBounds();
+    }
 }

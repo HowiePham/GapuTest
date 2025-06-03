@@ -28,4 +28,9 @@ public class ObjectVisual : MonoBehaviour
         if (itemVisual == null) return;
         visualRenderer.sprite = itemVisual;
     }
+
+    public Bounds GetVisualBounds()
+    {
+        return visualRenderer.bounds;
+    }
 }
