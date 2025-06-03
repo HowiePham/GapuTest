@@ -556,8 +556,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
   minZoomValue: 1
-  mapList:
-  - {fileID: 3009392940424289667}
 --- !u!1001 &477689166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1990,7 +1988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2272,6 +2270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 2471054228303059290, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
+      propertyPath: mapInfo.IsUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4340064047161194889, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2342,17 +2344,6 @@ PrefabInstance:
       addedObject: {fileID: 378634578}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
---- !u!114 &3009392940424289667 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2471054228303059290, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
-  m_PrefabInstance: {fileID: 3009392940424289666}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f6ae5dda684ec4dafd84a4489faeb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

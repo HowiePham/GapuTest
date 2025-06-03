@@ -1,17 +1,40 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraLimitHandler : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float minZoomValue;
-    [SerializeField] private List<MapController> mapList = new List<MapController>();
     private Bounds _cameraBounds;
+    private MapManager MapManager => SingletonManager.MapManager;
 
     private void Awake()
     {
-        foreach (var map in mapList)
+        ListenEvent();
+    }
+
+    private void OnDestroy()
+    {
+        StopListeningEvent();
+    }
+
+    private void ListenEvent()
+    {
+        GameEventSystem.Subscribe(EventName.MapProgressUpdated, InitCameraBounds);
+    }
+
+    private void StopListeningEvent()
+    {
+        GameEventSystem.Unsubscribe(EventName.MapProgressUpdated, InitCameraBounds);
+    }
+
+    private void InitCameraBounds()
+    {
+        var mapProgress = MapManager.GetCurrentMapProgress();
+
+        for (int i = 0; i <= mapProgress; i++)
         {
+            var mapID = i;
+            var map = MapManager.GetMapController(mapID);
             var mapBounds = map.GetMapBounds();
             _cameraBounds.Encapsulate(mapBounds);
         }
@@ -40,7 +63,7 @@ public class CameraLimitHandler : MonoBehaviour
         var halfMapHeight = mapHeight / 2;
         var halfMapWidthBasedOnAspect = mapWidth / (2 * aspectRatio);
         var maxZoomValue = Mathf.Min(halfMapHeight, halfMapWidthBasedOnAspect);
-        
+
         return maxZoomValue;
     }
 
