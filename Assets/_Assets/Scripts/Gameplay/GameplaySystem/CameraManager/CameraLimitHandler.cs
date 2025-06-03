@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +5,6 @@ public class CameraLimitHandler : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float minZoomValue;
-    [SerializeField] private float maxZoomValue;
     [SerializeField] private List<MapController> mapList = new List<MapController>();
     private Bounds _cameraBounds;
 
@@ -22,7 +19,29 @@ public class CameraLimitHandler : MonoBehaviour
 
     private void Update()
     {
+        LimitCameraZoom();
         LimitCameraPosition();
+    }
+
+    private void LimitCameraZoom()
+    {
+        var maxZoomValue = CalculateMaxZoomValue();
+        mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, minZoomValue, maxZoomValue);
+    }
+
+    private float CalculateMaxZoomValue()
+    {
+        var aspectRatio = (float)Screen.width / Screen.height;
+
+        var cameraBoundsSize = _cameraBounds.size;
+        var mapWidth = cameraBoundsSize.x;
+        var mapHeight = cameraBoundsSize.y;
+
+        var halfMapHeight = mapHeight / 2;
+        var halfMapWidthBasedOnAspect = mapWidth / (2 * aspectRatio);
+        var maxZoomValue = Mathf.Min(halfMapHeight, halfMapWidthBasedOnAspect);
+        
+        return maxZoomValue;
     }
 
     private void LimitCameraPosition()
