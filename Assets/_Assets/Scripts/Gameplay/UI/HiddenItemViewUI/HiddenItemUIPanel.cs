@@ -60,10 +60,17 @@ public class HiddenItemUIPanel : MonoBehaviour
     {
         var hiddenItemUI = GetHiddenItemUI(itemID);
         hiddenItemUI.UpdateItemQuantityText();
+
+        InvokeHiddenItemUIUpdated();
     }
 
     private HiddenItemUI GetHiddenItemUI(int itemID)
     {
         return !_hiddenItemUIList.ContainsKey(itemID) ? null : _hiddenItemUIList[itemID];
+    }
+
+    private void InvokeHiddenItemUIUpdated()
+    {
+        GameEventSystem.Invoke(EventName.HiddenItemUIUpdated);
     }
 }

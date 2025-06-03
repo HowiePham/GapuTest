@@ -20,17 +20,17 @@ public class OverallViewPanel : MonoBehaviour
 
     private void ListenEvent()
     {
-        GameEventSystem.Subscribe<int>(EventName.ItemProgressUpdated, UpdateOverviewUI);
-        GameEventSystem.Subscribe(EventName.MapProgressUpdated, () => UpdateOverviewUI());
+        GameEventSystem.Subscribe(EventName.HiddenItemUIUpdated, UpdateOverviewUI);
+        GameEventSystem.Subscribe(EventName.MapProgressUpdated, UpdateOverviewUI);
     }
 
     private void StopListeningEvent()
     {
-        GameEventSystem.Unsubscribe<int>(EventName.ItemProgressUpdated, UpdateOverviewUI);
-        GameEventSystem.Unsubscribe(EventName.MapProgressUpdated, () => UpdateOverviewUI());
+        GameEventSystem.Unsubscribe(EventName.HiddenItemUIUpdated, UpdateOverviewUI);
+        GameEventSystem.Unsubscribe(EventName.MapProgressUpdated, UpdateOverviewUI);
     }
 
-    private void UpdateOverviewUI(int itemID = -1)
+    private void UpdateOverviewUI()
     {
         var currentFoundItem = MapManager.GetTotalFoundItem();
         var totalItem = MapManager.GetTotalItem();

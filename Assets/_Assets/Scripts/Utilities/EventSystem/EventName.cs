@@ -4,5 +4,6 @@
     HiddenItemFound,
     MapProgressChanged,
     MapProgressUpdated,
-    ItemProgressUpdated
+    ItemProgressUpdated,
+    HiddenItemUIUpdated
 }
