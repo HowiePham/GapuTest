@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputSystem : MonoBehaviour
 {
@@ -11,12 +12,18 @@ public class InputSystem : MonoBehaviour
 
     private void ClickLeftMouse()
     {
-        if (!Input.GetMouseButtonDown(LeftMouseIndex)) return;
+        if (!Input.GetMouseButtonDown(LeftMouseIndex) || IsMouseOverUI()) return;
         InvokeClickingLeftMouseEvent();
     }
 
     private void InvokeClickingLeftMouseEvent()
     {
         GameEventSystem.Invoke(EventName.ClickingLeftMouse);
+    }
+
+    private bool IsMouseOverUI()
+    {
+        var eventSystem = EventSystem.current;
+        return eventSystem.IsPointerOverGameObject();
     }
 }
