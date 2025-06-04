@@ -2268,6 +2268,8 @@ MonoBehaviour:
     ToolType: 1
     toolQuantity: 5
   compass: {fileID: 1481117849}
+  toolDuration: 5
+  usingTool: 0
 --- !u!4 &1502983442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5509360503951028046, guid: eb8d292dbfecce04e9d181a95fce4462, type: 3}
