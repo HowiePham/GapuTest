@@ -12,4 +12,5 @@
     ReleaseMultiTouching,
     HoldingSingleTouch,
     UsingTool,
+    UsingToolCompleted,
 }

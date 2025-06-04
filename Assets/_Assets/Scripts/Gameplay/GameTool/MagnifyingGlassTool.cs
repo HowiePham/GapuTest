@@ -8,6 +8,7 @@ public class MagnifyingGlassTool : GameTool
     {
         FindHiddenItem();
         ConsumeTool();
+        InvokeUsingToolCompleted();
     }
 
     private void FindHiddenItem()

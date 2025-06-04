@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CompassTool : GameTool
 {
@@ -10,8 +9,12 @@ public class CompassTool : GameTool
 
     public override void Execute()
     {
+        if (usingTool) return;
+
         InitCompass();
         SetUsingToolState(true);
+        ConsumeTool();
+        InvokeUsingToolCompleted();
     }
 
     private void InitCompass()

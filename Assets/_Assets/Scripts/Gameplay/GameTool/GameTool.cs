@@ -6,7 +6,7 @@ public abstract class GameTool : MonoBehaviour
     [SerializeField] protected GameToolInfo gameToolInfo;
     protected const int consumptionValue = 1;
     protected MapManager MapManager => SingletonManager.MapManager;
-    
+
     public abstract void Execute();
 
     public ToolType GetToolType()
@@ -27,6 +27,11 @@ public abstract class GameTool : MonoBehaviour
     public void ConsumeTool()
     {
         gameToolInfo.ConsumeTool(consumptionValue);
+    }
+
+    protected void InvokeUsingToolCompleted()
+    {
+        GameEventSystem.Invoke(EventName.UsingToolCompleted);
     }
 
     protected List<HiddenItem> GetAllHiddenItemInMap()

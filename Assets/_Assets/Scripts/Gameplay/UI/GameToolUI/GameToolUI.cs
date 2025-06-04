@@ -10,6 +10,26 @@ public class GameToolUI : MonoBehaviour
     private GameToolManager GameToolManager => SingletonManager.GameToolManager;
     private InGameVisualHandler InGameVisualHandler => SingletonManager.InGameVisualHandler;
 
+    private void Start()
+    {
+        ListenEvent();
+    }
+
+    private void ListenEvent()
+    {
+        GameEventSystem.Subscribe(EventName.UsingToolCompleted, HandleQuantityText);
+    }
+
+    private void StopListeningEvent()
+    {
+        GameEventSystem.Unsubscribe(EventName.UsingToolCompleted, HandleQuantityText);
+    }
+
+    private void OnDisable()
+    {
+        StopListeningEvent();
+    }
+    
     public void InitUI(ToolType newToolType)
     {
         toolType = newToolType;
