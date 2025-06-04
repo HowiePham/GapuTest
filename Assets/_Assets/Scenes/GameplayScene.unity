@@ -1579,6 +1579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chartImage: {fileID: 986772901}
+  changingTime: 0.2
 --- !u!1 &997754307
 GameObject:
   m_ObjectHideFlags: 0
