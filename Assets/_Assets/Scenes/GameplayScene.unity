@@ -1255,6 +1255,8 @@ MonoBehaviour:
   cameraLimitHandler: {fileID: 409562244}
   mainCamera: {fileID: 519420031}
   zoomToMinTime: 1
+  zoomSpeed: 0.5
+  isZooming: 0
 --- !u!1001 &955942478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2582,6 +2584,7 @@ MonoBehaviour:
   interactingThreshold: 0.1
   isTouching: 0
   isHolding: 0
+  usingMouse: 0
 --- !u!1001 &3009392940424289666
 PrefabInstance:
   m_ObjectHideFlags: 0

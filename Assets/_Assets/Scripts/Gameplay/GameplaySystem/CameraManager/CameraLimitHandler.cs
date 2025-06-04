@@ -39,12 +39,7 @@ public class CameraLimitHandler : MonoBehaviour
             _cameraBounds.Encapsulate(mapBounds);
         }
     }
-
-    private void Update()
-    {
-        LimitCameraZoom();
-    }
-
+    
     public void LimitCameraZoom()
     {
         var maxZoomValue = CalculateMaxZoomValue();

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SingleTouchInputSystem : MonoBehaviour
@@ -7,6 +6,7 @@ public class SingleTouchInputSystem : MonoBehaviour
     [SerializeField] private float interactingThreshold;
     [SerializeField] private bool isTouching;
     [SerializeField] private bool isHolding;
+    [SerializeField] private bool usingMouse;
     private float _interactingTimer;
     private const int LeftMouseIndex = 0;
 
@@ -33,7 +33,6 @@ public class SingleTouchInputSystem : MonoBehaviour
     private void Update()
     {
         if (!IsSingleTouch()) return;
-        
         ReleaseLeftMouse();
         RunInteractingTimer();
         CheckHoldingEvent();
@@ -52,7 +51,7 @@ public class SingleTouchInputSystem : MonoBehaviour
         _interactingTimer = 0;
         SetTouchState(false);
         SetHoldingState(false);
-        
+
         GameEventSystem.Invoke(EventName.ReleaseSingleTouch);
     }
 
@@ -112,6 +111,6 @@ public class SingleTouchInputSystem : MonoBehaviour
     private bool IsSingleTouch()
     {
         var touchingCount = Input.touchCount;
-        return touchingCount == 1;
+        return touchingCount == 1 || usingMouse;
     }
 }

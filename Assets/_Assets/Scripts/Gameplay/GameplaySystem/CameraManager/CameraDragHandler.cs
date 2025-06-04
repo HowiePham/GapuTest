@@ -42,7 +42,8 @@ public class CameraDragHandler : MonoBehaviour
 
         var currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         var difference = dragStartPosition - currentMousePosition;
-        mainCamera.transform.position += difference;
+        var mainCameraTransform = mainCamera.transform;
+        mainCameraTransform.position += difference;
 
         LimitCameraPosition();
     }
