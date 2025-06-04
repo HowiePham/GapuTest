@@ -12,6 +12,9 @@ public class SingleTouchInputSystem : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_EDITOR
+        HandleUsingMouse();
+#endif
         ListenEvent();
     }
 
@@ -112,5 +115,10 @@ public class SingleTouchInputSystem : MonoBehaviour
     {
         var touchingCount = Input.touchCount;
         return touchingCount == 1 || usingMouse;
+    }
+
+    private void HandleUsingMouse()
+    {
+        usingMouse = true;
     }
 }

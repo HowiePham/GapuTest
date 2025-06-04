@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraZoomHandler: {fileID: 940714335}
+  cameraDragHandler: {fileID: 1845727507}
 --- !u!1001 &378634577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -945,7 +946,6 @@ MonoBehaviour:
   gameToolInfo:
     ToolType: 0
     toolQuantity: 2
-  mainCamera: {fileID: 519420031}
 --- !u!1 &556344421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,6 +2312,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   isDragging: 0
   dragStartPosition: {x: 0, y: 0, z: 0}
+  draggingEffectTime: 1
 --- !u!1 &1860762673
 GameObject:
   m_ObjectHideFlags: 0

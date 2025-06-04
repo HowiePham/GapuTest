@@ -2,8 +2,6 @@
 
 public class MagnifyingGlassTool : GameTool
 {
-    [SerializeField] private Camera mainCamera;
-
     private MapManager MapManager => SingletonManager.MapManager;
     private CameraManager CameraManager => SingletonManager.CameraManager;
 
@@ -32,9 +30,7 @@ public class MagnifyingGlassTool : GameTool
 
     private void MoveCameraTo(Vector2 itemPos)
     {
-        var mainCameraTransform = mainCamera.transform;
-        var oldCamPos = mainCameraTransform.position;
-        mainCameraTransform.position = new Vector3(itemPos.x, itemPos.y, oldCamPos.z);
+        CameraManager.DragCameraTo(itemPos);
     }
 
     private void ZoomCamera()

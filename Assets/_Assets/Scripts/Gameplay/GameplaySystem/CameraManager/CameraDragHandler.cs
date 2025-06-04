@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CameraDragHandler : MonoBehaviour
@@ -6,6 +7,7 @@ public class CameraDragHandler : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private bool isDragging;
     [SerializeField] private Vector3 dragStartPosition;
+    [SerializeField] private float draggingEffectTime;
 
     private void Start()
     {
@@ -46,6 +48,29 @@ public class CameraDragHandler : MonoBehaviour
         mainCameraTransform.position += difference;
 
         LimitCameraPosition();
+    }
+
+    public void DragCameraTo(Vector2 newPos)
+    {
+        StartCoroutine(RunDraggingEffect(newPos));
+    }
+
+    private IEnumerator RunDraggingEffect(Vector2 newPos)
+    {
+        var mainCameraTransform = mainCamera.transform;
+        var oldCamPos = mainCameraTransform.position;
+
+        var newPosVector3 = new Vector3(newPos.x, newPos.y, oldCamPos.z);
+        
+        float elapsedTime = 0;
+        while (elapsedTime < draggingEffectTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            mainCameraTransform.position = Vector3.Lerp(oldCamPos, newPosVector3, elapsedTime);
+
+            yield return null;
+        }
     }
 
     private void LimitCameraPosition()
