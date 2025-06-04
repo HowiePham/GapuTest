@@ -46,7 +46,7 @@ public class InputSystem : MonoBehaviour
 
     private void ReleaseLeftMouse()
     {
-        if (!Input.GetMouseButtonUp(LeftMouseIndex)) return;
+        if (!Input.GetMouseButtonUp(LeftMouseIndex) || !isTouching) return;
 
         CheckClickingEvent();
         ResetSystem();

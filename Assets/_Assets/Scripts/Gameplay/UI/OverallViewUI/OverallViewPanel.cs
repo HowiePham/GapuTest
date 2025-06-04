@@ -10,7 +10,6 @@ public class OverallViewPanel : MonoBehaviour
     private void Awake()
     {
         ListenEvent();
-        // UpdateOverviewUI();
     }
 
     private void OnDestroy()
@@ -45,6 +44,6 @@ public class OverallViewPanel : MonoBehaviour
 
     private void UpdateOverviewText(int currentCount, int maxCount)
     {
-        overallText.text = currentCount + " / " + maxCount;
+        overallText.text = currentCount + GameString.Slash + maxCount;
     }
 }

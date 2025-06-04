@@ -29,6 +29,6 @@ public class HiddenItemUI : MonoBehaviour
         var totalItemCount = MapManager.GetNumberOfItem(ItemID);
         var totalFoundItemCount = MapManager.GetNumberOfFoundItem(ItemID);
 
-        hiddenItemQuantity.text = totalFoundItemCount + "/" + totalItemCount;
+        hiddenItemQuantity.text = totalFoundItemCount + GameString.Slash + totalItemCount;
     }
 }
