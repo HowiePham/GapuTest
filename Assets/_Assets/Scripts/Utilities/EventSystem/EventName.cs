@@ -13,4 +13,5 @@
     HoldingSingleTouch,
     UsingTool,
     UsingToolCompleted,
+    HiddenPanelUpdated,
 }

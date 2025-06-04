@@ -6,7 +6,7 @@ public class ItemFoundEffectHandler : GameEffectHandler
     [SerializeField] private Camera mainCamera;
     [SerializeField] private FoundItemEffect currentEffect;
 
-    private void Start()
+    private void Awake()
     {
         ListenEvent();
     }
@@ -30,10 +30,10 @@ public class ItemFoundEffectHandler : GameEffectHandler
     {
         CreateGameEffectAt();
         currentEffect.InitEffect(itemID);
-        HandleEffect();
+        HandleEffectState();
     }
 
-    private void HandleEffect()
+    private void HandleEffectState()
     {
         var currentEffectTransform = currentEffect.transform;
         currentEffectTransform.position = mainCamera.WorldToScreenPoint(new Vector3(0, 0, 0));

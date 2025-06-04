@@ -29,6 +29,8 @@ public class HiddenItemScrollHandler : MonoBehaviour
         normalizedPosition = Mathf.Clamp01(normalizedPosition);
 
         StartCoroutine(RunScrollingEffect(normalizedPosition));
+
+        GameEventSystem.Invoke(EventName.HiddenPanelUpdated, hiddenItemUI);
     }
 
     private IEnumerator RunScrollingEffect(float targetValue)

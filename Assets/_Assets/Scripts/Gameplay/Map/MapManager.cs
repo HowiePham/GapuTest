@@ -9,11 +9,11 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 
     protected override void Init()
     {
-        ListenEvent();
     }
 
     private void Start()
     {
+        ListenEvent();
         InitSystem();
     }
 
