@@ -30,13 +30,15 @@ public class ItemFoundEffectHandler : GameEffectHandler
     {
         CreateGameEffectAt();
         currentEffect.InitEffect(itemID);
-        HandleEffectState();
+        HandleEffectStartingPos();
     }
 
-    private void HandleEffectState()
+    private void HandleEffectStartingPos()
     {
+        var screenPosition = Input.mousePosition;
+        screenPosition.z = mainCamera.nearClipPlane;
         var currentEffectTransform = currentEffect.transform;
-        currentEffectTransform.position = mainCamera.WorldToScreenPoint(new Vector3(0, 0, 0));
+        currentEffectTransform.position = screenPosition;
     }
 
     public override void CreateGameEffectAt(Vector2 position)
