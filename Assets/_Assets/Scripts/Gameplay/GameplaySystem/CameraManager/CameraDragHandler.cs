@@ -61,13 +61,13 @@ public class CameraDragHandler : MonoBehaviour
         var oldCamPos = mainCameraTransform.position;
 
         var newPosVector3 = new Vector3(newPos.x, newPos.y, oldCamPos.z);
-        
+
         float elapsedTime = 0;
         while (elapsedTime < draggingEffectTime)
         {
             elapsedTime += Time.deltaTime;
 
-            mainCameraTransform.position = Vector3.Lerp(oldCamPos, newPosVector3, elapsedTime);
+            mainCameraTransform.position = Vector3.Lerp(oldCamPos, newPosVector3, elapsedTime / draggingEffectTime);
 
             yield return null;
         }

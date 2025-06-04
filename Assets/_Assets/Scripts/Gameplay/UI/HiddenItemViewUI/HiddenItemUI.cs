@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class HiddenItemUI : MonoBehaviour
 {
+    [SerializeField] private RectTransform rectTransform;
     [SerializeField] private Image hiddenItemImage;
     [SerializeField] private Text hiddenItemQuantity;
     [SerializeField] private HiddenItemInfo hiddenItemInfo;
@@ -30,5 +31,10 @@ public class HiddenItemUI : MonoBehaviour
         var totalFoundItemCount = MapManager.GetNumberOfFoundItem(ItemID);
 
         hiddenItemQuantity.text = totalFoundItemCount + GameString.Slash + totalItemCount;
+    }
+
+    public RectTransform GetRectTransform()
+    {
+        return rectTransform;
     }
 }

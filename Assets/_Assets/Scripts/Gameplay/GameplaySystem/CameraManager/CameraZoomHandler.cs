@@ -84,7 +84,7 @@ public class CameraZoomHandler : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
 
-            mainCamera.orthographicSize = Mathf.Lerp(currentZoomValue, zoomValue, elapsedTime);
+            mainCamera.orthographicSize = Mathf.Lerp(currentZoomValue, zoomValue, elapsedTime / zoomToMinTime);
 
             yield return null;
         }

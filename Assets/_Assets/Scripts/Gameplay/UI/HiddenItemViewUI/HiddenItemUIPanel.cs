@@ -4,7 +4,7 @@ using UnityEngine;
 public class HiddenItemUIPanel : MonoBehaviour
 {
     [SerializeField] private HiddenItemUI hiddenItemUIPrefab;
-    [SerializeField] private int testQuantity;
+    [SerializeField] private HiddenItemScrollHandler hiddenItemScrollHandler;
     private Dictionary<int, HiddenItemUI> _hiddenItemUIList = new Dictionary<int, HiddenItemUI>();
     private MapManager MapManager => SingletonManager.MapManager;
 
@@ -61,7 +61,14 @@ public class HiddenItemUIPanel : MonoBehaviour
         var hiddenItemUI = GetHiddenItemUI(itemID);
         hiddenItemUI.UpdateItemQuantityText();
 
+        ScrollToHiddenItemUI(hiddenItemUI);
         InvokeHiddenItemUIUpdated();
+    }
+
+    private void ScrollToHiddenItemUI(HiddenItemUI hiddenItemUI)
+    {
+        var rectTransform = hiddenItemUI.GetRectTransform();
+        hiddenItemScrollHandler.ScrollTo(rectTransform);
     }
 
     private HiddenItemUI GetHiddenItemUI(int itemID)
