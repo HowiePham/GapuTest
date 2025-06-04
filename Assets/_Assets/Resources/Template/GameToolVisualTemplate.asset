@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   templateList:
   - {fileID: 21300000, guid: ad3c073e88b03b842854afcb52cb8951, type: 3}
+  - {fileID: 21300000, guid: be8126c684065cb48b0d67e27d90711d, type: 3}
