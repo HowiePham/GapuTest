@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CameraZoomHandler : MonoBehaviour
@@ -9,6 +10,12 @@ public class CameraZoomHandler : MonoBehaviour
     public void ZoomToMinValue()
     {
         var minZoomValue = cameraLimitHandler.GetMinZoomValue();
+
+        StartCoroutine(RunZoomEffect(minZoomValue));
+    }
+
+    private IEnumerator RunZoomEffect(float zoomValue)
+    {
         var currentZoomValue = mainCamera.orthographicSize;
         float elapsedTime = 0;
 
@@ -16,7 +23,9 @@ public class CameraZoomHandler : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
 
-            mainCamera.orthographicSize = Mathf.Lerp(currentZoomValue, minZoomValue, elapsedTime);
+            mainCamera.orthographicSize = Mathf.Lerp(currentZoomValue, zoomValue, elapsedTime);
+
+            yield return null;
         }
     }
 }

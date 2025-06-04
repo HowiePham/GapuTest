@@ -2320,6 +2320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881bc2fcd60403642b97e3c1941edcaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraLimitHandler: {fileID: 409562244}
   mainCamera: {fileID: 519420031}
   isDragging: 0
   dragStartPosition: {x: 0, y: 0, z: 0}

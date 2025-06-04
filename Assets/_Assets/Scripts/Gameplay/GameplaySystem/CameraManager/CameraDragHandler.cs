@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraDragHandler : MonoBehaviour
 {
+    [SerializeField] private CameraLimitHandler cameraLimitHandler;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private bool isDragging;
     [SerializeField] private Vector3 dragStartPosition;
@@ -32,11 +33,23 @@ public class CameraDragHandler : MonoBehaviour
 
     private void Update()
     {
+        HandleDraggingCamera();
+    }
+
+    private void HandleDraggingCamera()
+    {
         if (!isDragging) return;
 
         var currentMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         var difference = dragStartPosition - currentMousePosition;
         mainCamera.transform.position += difference;
+
+        LimitCameraPosition();
+    }
+
+    private void LimitCameraPosition()
+    {
+        cameraLimitHandler.LimitCameraPosition();
     }
 
     private void GetFirstTouchPosition()

@@ -43,10 +43,9 @@ public class CameraLimitHandler : MonoBehaviour
     private void Update()
     {
         LimitCameraZoom();
-        LimitCameraPosition();
     }
 
-    private void LimitCameraZoom()
+    public void LimitCameraZoom()
     {
         var maxZoomValue = CalculateMaxZoomValue();
         mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, minZoomValue, maxZoomValue);
@@ -67,7 +66,7 @@ public class CameraLimitHandler : MonoBehaviour
         return maxZoomValue;
     }
 
-    private void LimitCameraPosition()
+    public void LimitCameraPosition()
     {
         var cameraTransform = mainCamera.transform;
         var cameraBoundsMin = _cameraBounds.min;
