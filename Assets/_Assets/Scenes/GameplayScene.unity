@@ -945,7 +945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameToolInfo:
     ToolType: 0
-    toolQuantity: 2
+    toolQuantity: 10
 --- !u!1 &556344421
 GameObject:
   m_ObjectHideFlags: 0
