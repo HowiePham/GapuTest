@@ -2,7 +2,6 @@
 
 public class MagnifyingGlassTool : GameTool
 {
-    private MapManager MapManager => SingletonManager.MapManager;
     private CameraManager CameraManager => SingletonManager.CameraManager;
 
     public override void Execute()
@@ -13,9 +12,7 @@ public class MagnifyingGlassTool : GameTool
 
     private void FindHiddenItem()
     {
-        var currentMapProgress = MapManager.GetCurrentMapProgress();
-        var currentMap = MapManager.GetMapController(currentMapProgress);
-        var hiddenItemList = currentMap.GetAllHiddenItemInMap();
+        var hiddenItemList = GetAllHiddenItemInMap();
 
         foreach (var hiddenItem in hiddenItemList)
         {
