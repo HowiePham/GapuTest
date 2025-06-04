@@ -1,13 +1,30 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameToolManager : MonoBehaviour
+public class GameToolManager : TemporaryMonoSingleton<GameToolManager>
 {
     private Dictionary<ToolType, GameTool> _gameToolList;
 
-    private void Awake()
+    protected override void Init()
     {
         InitSystem();
+        ListenEvent();
+    }
+
+    private void OnDisable()
+    {
+        StopListeningEvent();
+    }
+
+    private void ListenEvent()
+    {
+        GameEventSystem.Subscribe<ToolType>(EventName.UsingTool, UseTool);
+    }
+
+    private void StopListeningEvent()
+    {
+        GameEventSystem.Unsubscribe<ToolType>(EventName.UsingTool, UseTool);
     }
 
     private void InitSystem()
@@ -41,11 +58,5 @@ public class GameToolManager : MonoBehaviour
     {
         var gameTool = GetGameTool(toolType);
         return gameTool.GetToolQuantity();
-    }
-
-    [ContextMenu("TEST")]
-    public void Test()
-    {
-        UseTool(ToolType.MagnifyingGlass);
     }
 }

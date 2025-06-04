@@ -10,5 +10,6 @@
     FirstTouch,
     MultiTouch,
     ReleaseMultiTouching,
-    HoldingSingleTouch
+    HoldingSingleTouch,
+    UsingTool,
 }
