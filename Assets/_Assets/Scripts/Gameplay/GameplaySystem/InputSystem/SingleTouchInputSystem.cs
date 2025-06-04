@@ -1,7 +1,8 @@
+﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InputSystem : MonoBehaviour
+public class SingleTouchInputSystem : MonoBehaviour
 {
     [SerializeField] private float interactingThreshold;
     [SerializeField] private bool isTouching;
@@ -11,11 +12,28 @@ public class InputSystem : MonoBehaviour
 
     private void Start()
     {
-        ResetSystem();
+        ListenEvent();
+    }
+
+    private void OnDestroy()
+    {
+        StopListeningEvent();
+    }
+
+    private void ListenEvent()
+    {
+        GameEventSystem.Subscribe(EventName.MultiTouch, ResetSystem);
+    }
+
+    private void StopListeningEvent()
+    {
+        GameEventSystem.Unsubscribe(EventName.MultiTouch, ResetSystem);
     }
 
     private void Update()
     {
+        if (!IsSingleTouch()) return;
+        
         ReleaseLeftMouse();
         RunInteractingTimer();
         CheckHoldingEvent();
@@ -34,6 +52,8 @@ public class InputSystem : MonoBehaviour
         _interactingTimer = 0;
         SetTouchState(false);
         SetHoldingState(false);
+        
+        GameEventSystem.Invoke(EventName.ReleaseSingleTouch);
     }
 
     private void FirstTouch()
@@ -50,7 +70,6 @@ public class InputSystem : MonoBehaviour
 
         CheckClickingEvent();
         ResetSystem();
-        GameEventSystem.Invoke(EventName.ReleaseLeftMouse);
     }
 
     private void CheckClickingEvent()
@@ -66,7 +85,7 @@ public class InputSystem : MonoBehaviour
         if (!EnoughHoldingThreshold()) return;
 
         SetHoldingState(true);
-        GameEventSystem.Invoke(EventName.HoldingLeftMouse);
+        GameEventSystem.Invoke(EventName.HoldingSingleTouch);
     }
 
     private bool IsMouseOverUI()
@@ -88,5 +107,11 @@ public class InputSystem : MonoBehaviour
     private bool EnoughHoldingThreshold()
     {
         return _interactingTimer >= interactingThreshold;
+    }
+
+    private bool IsSingleTouch()
+    {
+        var touchingCount = Input.touchCount;
+        return touchingCount == 1;
     }
 }

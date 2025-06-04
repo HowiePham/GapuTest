@@ -6,7 +6,9 @@
     MapProgressUpdated,
     ItemProgressUpdated,
     HiddenItemUIUpdated,
-    ReleaseLeftMouse,
+    ReleaseSingleTouch,
     FirstTouch,
-    HoldingLeftMouse
+    MultiTouch,
+    ReleaseMultiTouching,
+    HoldingSingleTouch
 }

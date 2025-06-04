@@ -20,15 +20,15 @@ public class CameraDragHandler : MonoBehaviour
     private void ListenEvent()
     {
         GameEventSystem.Subscribe(EventName.FirstTouch, GetFirstTouchPosition);
-        GameEventSystem.Subscribe(EventName.HoldingLeftMouse, EnableDraggingCamera);
-        GameEventSystem.Subscribe(EventName.ReleaseLeftMouse, DisableDraggingCamera);
+        GameEventSystem.Subscribe(EventName.HoldingSingleTouch, EnableDraggingCamera);
+        GameEventSystem.Subscribe(EventName.ReleaseSingleTouch, DisableDraggingCamera);
     }
 
     private void StopListeningEvent()
     {
         GameEventSystem.Unsubscribe(EventName.FirstTouch, GetFirstTouchPosition);
-        GameEventSystem.Unsubscribe(EventName.HoldingLeftMouse, EnableDraggingCamera);
-        GameEventSystem.Unsubscribe(EventName.ReleaseLeftMouse, DisableDraggingCamera);
+        GameEventSystem.Unsubscribe(EventName.HoldingSingleTouch, EnableDraggingCamera);
+        GameEventSystem.Unsubscribe(EventName.ReleaseSingleTouch, DisableDraggingCamera);
     }
 
     private void Update()
@@ -59,11 +59,16 @@ public class CameraDragHandler : MonoBehaviour
 
     private void EnableDraggingCamera()
     {
-        isDragging = true;
+        SetDraggingState(true);
     }
 
     private void DisableDraggingCamera()
     {
-        isDragging = false;
+        SetDraggingState(false);
+    }
+
+    private void SetDraggingState(bool state)
+    {
+        isDragging = state;
     }
 }
