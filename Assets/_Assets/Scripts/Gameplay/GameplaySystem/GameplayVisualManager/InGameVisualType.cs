@@ -2,4 +2,5 @@
 {
     HiddenItem,
     MapBackground,
+    GameTool,
 }

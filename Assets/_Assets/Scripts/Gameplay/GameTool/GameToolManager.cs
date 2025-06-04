@@ -46,6 +46,11 @@ public class GameToolManager : TemporaryMonoSingleton<GameToolManager>
         return _gameToolList[toolType];
     }
 
+    public Dictionary<ToolType, GameTool> GetGameToolList()
+    {
+        return _gameToolList;
+    }
+
     public void UseTool(ToolType toolType)
     {
         var gameTool = GetGameTool(toolType);
