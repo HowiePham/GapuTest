@@ -93,7 +93,12 @@ public class SingleTouchInputSystem : MonoBehaviour
     private bool IsMouseOverUI()
     {
         var eventSystem = EventSystem.current;
+#if UNITY_EDITOR
         return eventSystem.IsPointerOverGameObject();
+#else
+        var touch = Input.GetTouch(LeftMouseIndex);
+        return eventSystem.IsPointerOverGameObject(touch.fingerId);
+#endif
     }
 
     private void SetTouchState(bool state)
