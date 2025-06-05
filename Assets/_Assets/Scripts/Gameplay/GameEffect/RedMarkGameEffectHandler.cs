@@ -7,7 +7,7 @@ public class RedMarkGameEffectHandler : GameEffectHandler
         PoolingSystem.GetObjectFromPool(PoolType.RedMarkEffect, position);
     }
 
-    public override void CreateGameEffectAt()
+    public override void CreateGameEffect()
     {
         PoolingSystem.GetObjectFromPool(PoolType.RedMarkEffect);
     }

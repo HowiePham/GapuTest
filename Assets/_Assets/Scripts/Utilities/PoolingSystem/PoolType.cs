@@ -2,4 +2,5 @@
 {
     RedMarkEffect,
     FoundItemEffect,
+    ItemDetailEffect,
 }

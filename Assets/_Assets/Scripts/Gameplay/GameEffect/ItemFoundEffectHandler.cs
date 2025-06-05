@@ -1,13 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemFoundEffectHandler : GameEffectHandler
 {
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private FoundItemEffect currentEffect;
-
-    private void Awake()
+    private FoundItemEffect _currentEffect;
+    
+    protected override void InitSystem()
     {
+        base.InitSystem();
         ListenEvent();
     }
 
@@ -28,28 +27,20 @@ public class ItemFoundEffectHandler : GameEffectHandler
 
     private void InitFoundEffect(int itemID)
     {
-        CreateGameEffectAt();
-        currentEffect.InitEffect(itemID);
-        HandleEffectStartingPos();
-    }
-
-    private void HandleEffectStartingPos()
-    {
-        var screenPosition = Input.mousePosition;
-        screenPosition.z = mainCamera.nearClipPlane;
-        var currentEffectTransform = currentEffect.transform;
-        currentEffectTransform.position = screenPosition;
+        var screenPosition = GetCurrentMousePosition();
+        CreateGameEffectAt(screenPosition);
+        _currentEffect.InitEffect(itemID);
     }
 
     public override void CreateGameEffectAt(Vector2 position)
     {
         var newEffect = PoolingSystem.GetObjectFromPool(PoolType.FoundItemEffect, position);
-        currentEffect = newEffect.GetComponent<FoundItemEffect>();
+        _currentEffect = newEffect.GetComponent<FoundItemEffect>();
     }
 
-    public override void CreateGameEffectAt()
+    public override void CreateGameEffect()
     {
         var newEffect = PoolingSystem.GetObjectFromPool(PoolType.FoundItemEffect);
-        currentEffect = newEffect.GetComponent<FoundItemEffect>();
+        _currentEffect = newEffect.GetComponent<FoundItemEffect>();
     }
 }

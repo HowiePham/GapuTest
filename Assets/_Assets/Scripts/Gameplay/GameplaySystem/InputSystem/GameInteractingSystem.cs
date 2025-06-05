@@ -39,16 +39,13 @@ public class GameInteractingSystem : MonoBehaviour
         var hitCollider = rayCastHit2D.collider;
         if (hitCollider == null)
         {
-            // Debug.Log($"--- (INPUT) Not interact with anything.");
             HandleRedMarkEffect(mouseWorldPoint);
             return;
         }
 
         var selectableObject = hitCollider.GetComponent<ISelectable>();
-
         if (selectableObject == null)
         {
-            // Debug.Log($"--- (INPUT) Not interact with anything.");
             HandleRedMarkEffect(mouseWorldPoint);
             return;
         }

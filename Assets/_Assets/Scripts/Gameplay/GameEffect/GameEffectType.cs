@@ -2,4 +2,5 @@
 {
     RedMark,
     FoundItem,
+    ItemDetail,
 }
