@@ -15,5 +15,6 @@
     UsingToolCompleted,
     HiddenPanelUpdated,
     HiddenItemUIClicked,
-    UnlockNewMap
+    UnlockNewMap,
+    EndLevel,
 }
