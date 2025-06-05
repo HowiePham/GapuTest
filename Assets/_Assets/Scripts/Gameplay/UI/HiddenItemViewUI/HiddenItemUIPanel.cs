@@ -43,7 +43,7 @@ public class HiddenItemUIPanel : MonoBehaviour
             if (_hiddenItemUIList.ContainsKey(itemID))
             {
                 var hiddenItemUI = GetHiddenItemUI(itemID);
-                hiddenItemUI.UpdateItemQuantityText();
+                hiddenItemUI.UpdateItemQuantityUI();
                 continue;
             }
 
@@ -61,7 +61,7 @@ public class HiddenItemUIPanel : MonoBehaviour
     private void UpdateHiddenItemUI(int itemID)
     {
         var hiddenItemUI = GetHiddenItemUI(itemID);
-        hiddenItemUI.UpdateItemQuantityText();
+        hiddenItemUI.UpdateItemQuantityUI();
 
         ScrollToHiddenItemUI(hiddenItemUI);
         GameEventSystem.Invoke(EventName.HiddenItemUIUpdated);
