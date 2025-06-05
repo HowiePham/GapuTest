@@ -22,12 +22,14 @@ public class HiddenItemUIPanel : MonoBehaviour
     {
         GameEventSystem.Subscribe<int>(EventName.ItemProgressUpdated, UpdateHiddenItemUI);
         GameEventSystem.Subscribe(EventName.MapProgressUpdated, UpdateUI);
+        GameEventSystem.Subscribe<HiddenItemUI>(EventName.HiddenItemUIClicked, ScrollToHiddenItemUI);
     }
 
     private void StopListeningEvent()
     {
         GameEventSystem.Unsubscribe<int>(EventName.ItemProgressUpdated, UpdateHiddenItemUI);
         GameEventSystem.Unsubscribe(EventName.MapProgressUpdated, UpdateUI);
+        GameEventSystem.Unsubscribe<HiddenItemUI>(EventName.HiddenItemUIClicked, ScrollToHiddenItemUI);
     }
 
     private void UpdateUI()

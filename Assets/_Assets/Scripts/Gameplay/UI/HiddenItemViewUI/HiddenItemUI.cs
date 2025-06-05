@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HiddenItemUI : MonoBehaviour
+public class HiddenItemUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private Image hiddenItemImage;
@@ -36,5 +37,10 @@ public class HiddenItemUI : MonoBehaviour
     public RectTransform GetRectTransform()
     {
         return rectTransform;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameEventSystem.Invoke(EventName.HiddenItemUIClicked, this);
     }
 }

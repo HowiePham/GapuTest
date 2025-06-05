@@ -14,4 +14,5 @@
     UsingTool,
     UsingToolCompleted,
     HiddenPanelUpdated,
+    HiddenItemUIClicked,
 }
