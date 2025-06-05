@@ -17,4 +17,5 @@
     HiddenItemUIClicked,
     UnlockNewMap,
     EndLevel,
+    FinishHiddenItemUI,
 }

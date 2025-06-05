@@ -22,6 +22,7 @@ public class HiddenItemUIPanel : MonoBehaviour
     {
         GameEventSystem.Subscribe<int>(EventName.ItemProgressUpdated, UpdateHiddenItemUI);
         GameEventSystem.Subscribe(EventName.MapProgressUpdated, UpdateUI);
+        GameEventSystem.Subscribe<Transform>(EventName.FinishHiddenItemUI, MoveItemUIToLast);
         GameEventSystem.Subscribe<HiddenItemUI>(EventName.HiddenItemUIClicked, ScrollToHiddenItemUI);
     }
 
@@ -29,7 +30,13 @@ public class HiddenItemUIPanel : MonoBehaviour
     {
         GameEventSystem.Unsubscribe<int>(EventName.ItemProgressUpdated, UpdateHiddenItemUI);
         GameEventSystem.Unsubscribe(EventName.MapProgressUpdated, UpdateUI);
+        GameEventSystem.Unsubscribe<Transform>(EventName.FinishHiddenItemUI, MoveItemUIToLast);
         GameEventSystem.Unsubscribe<HiddenItemUI>(EventName.HiddenItemUIClicked, ScrollToHiddenItemUI);
+    }
+
+    private void MoveItemUIToLast(Transform uiTransform)
+    {
+        uiTransform.SetAsLastSibling();
     }
 
     private void UpdateUI()

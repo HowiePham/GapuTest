@@ -37,6 +37,7 @@ public class HiddenItemUI : MonoBehaviour, IPointerClickHandler
         }
 
         EnableTickImage(true);
+        GameEventSystem.Invoke(EventName.FinishHiddenItemUI, transform);
     }
 
     private void EnableTickImage(bool state)
