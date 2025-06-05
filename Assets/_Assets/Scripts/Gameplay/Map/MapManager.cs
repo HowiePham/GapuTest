@@ -7,13 +7,8 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     [SerializeField] private MapProgress mapProgress;
     [SerializeField] private List<MapController> mapList = new List<MapController>();
 
-    protected override void Init()
-    {
-    }
-
     private void Start()
     {
-        ListenEvent();
         InitSystem();
     }
 
@@ -25,39 +20,7 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 
     private void OnDisable()
     {
-        StopListeningEvent();
-    }
-
-    private void ListenEvent()
-    {
-        GameEventSystem.Subscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
-        GameEventSystem.Subscribe<int>(EventName.MapProgressChanged, UnlockNewMap);
-    }
-
-    private void StopListeningEvent()
-    {
-        GameEventSystem.Unsubscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
-        GameEventSystem.Unsubscribe<int>(EventName.MapProgressChanged, UnlockNewMap);
-    }
-
-    private void UnlockNewMap(int mapID)
-    {
-        if (mapID >= mapList.Count) return;
-
-        var newMapUnlocked = mapList[mapID];
-        EnableMap(newMapUnlocked, true);
-
-        mapProgress.UpdateNewMapProgress(newMapUnlocked);
-    }
-
-    private void EnableMap(MapController map, bool unlock)
-    {
-        map.UnlockMap(unlock);
-    }
-
-    private void IncreaseTotalFoundItem(int itemID)
-    {
-        mapProgress.IncreaseTotalFoundItem(itemID);
+        mapProgress.Destruct();
     }
 
     private void InitMapList()
@@ -85,6 +48,11 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     public Dictionary<int, int> GetItemList()
     {
         return mapProgress.GetItemList();
+    }
+
+    public List<MapController> GetMapList()
+    {
+        return mapList;
     }
 
     public int GetCurrentMapProgress()

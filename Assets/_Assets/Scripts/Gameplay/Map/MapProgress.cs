@@ -10,8 +10,26 @@ public class MapProgress
     [SerializeField] private int currentMapProgress;
     [SerializeField] private ItemProgress itemProgress;
 
+    private void ListenEvent()
+    {
+        GameEventSystem.Subscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
+        GameEventSystem.Subscribe<MapController>(EventName.UnlockNewMap, UpdateNewMapProgress);
+    }
+
+    private void StopListeningEvent()
+    {
+        GameEventSystem.Unsubscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
+        GameEventSystem.Unsubscribe<MapController>(EventName.UnlockNewMap, UpdateNewMapProgress);
+    }
+
+    public void Destruct()
+    {
+        StopListeningEvent();
+    }
+
     public void Init(List<MapController> mapList)
     {
+        ListenEvent();
         itemProgress.UpdateAllHiddenItemInMap(mapList);
 
         for (var i = 0; i <= currentMapProgress; i++)
@@ -24,7 +42,7 @@ public class MapProgress
     public void UpdateNewMapProgress(MapController map)
     {
         UpdateNewTotalItemValue(map);
-        InvokeMapProgressUpdated();
+        GameEventSystem.Invoke(EventName.MapProgressUpdated);
     }
 
     private void UpdateNewTotalItemValue(MapController map)
@@ -56,17 +74,7 @@ public class MapProgress
     private void IncreaseMapProgress()
     {
         currentMapProgress++;
-        InvokeMapProgressChanged();
-    }
-
-    private void InvokeMapProgressChanged()
-    {
         GameEventSystem.Invoke(EventName.MapProgressChanged, currentMapProgress);
-    }
-
-    private void InvokeMapProgressUpdated()
-    {
-        GameEventSystem.Invoke(EventName.MapProgressUpdated);
     }
 
     public int GetTotalFoundItem()

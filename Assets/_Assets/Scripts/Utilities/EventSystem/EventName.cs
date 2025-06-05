@@ -15,4 +15,5 @@
     UsingToolCompleted,
     HiddenPanelUpdated,
     HiddenItemUIClicked,
+    UnlockNewMap
 }
