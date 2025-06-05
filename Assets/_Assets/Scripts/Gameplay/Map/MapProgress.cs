@@ -9,17 +9,18 @@ public class MapProgress
     [SerializeField] private int totalItem;
     [SerializeField] private int currentMapProgress;
     [SerializeField] private ItemProgress itemProgress;
+    private MapManager MapManager => SingletonManager.MapManager;
 
     private void ListenEvent()
     {
         GameEventSystem.Subscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
-        GameEventSystem.Subscribe<MapController>(EventName.UnlockNewMap, UpdateNewMapProgress);
+        GameEventSystem.Subscribe(EventName.UnlockNewMap, UpdateNewMapProgress);
     }
 
     private void StopListeningEvent()
     {
         GameEventSystem.Unsubscribe<int>(EventName.HiddenItemFound, IncreaseTotalFoundItem);
-        GameEventSystem.Unsubscribe<MapController>(EventName.UnlockNewMap, UpdateNewMapProgress);
+        GameEventSystem.Unsubscribe(EventName.UnlockNewMap, UpdateNewMapProgress);
     }
 
     public void Destruct()
@@ -37,6 +38,12 @@ public class MapProgress
             var map = mapList[i];
             UpdateNewMapProgress(map);
         }
+    }
+
+    public void UpdateNewMapProgress()
+    {
+        var map = MapManager.GetCurrentMap();
+        UpdateNewMapProgress(map);
     }
 
     public void UpdateNewMapProgress(MapController map)

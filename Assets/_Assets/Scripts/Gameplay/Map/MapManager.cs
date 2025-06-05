@@ -6,6 +6,7 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 {
     [SerializeField] private MapProgress mapProgress;
     [SerializeField] private List<MapController> mapList = new List<MapController>();
+    private CameraManager CameraManager => SingletonManager.CameraManager;
 
     private void Start()
     {
@@ -33,6 +34,14 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
 
             mapList.Add(mapController);
         }
+    }
+
+    public void GoToCurrentMap()
+    {
+        var currentMap = GetCurrentMap();
+        var mapTransform = currentMap.transform;
+        var mapPos = mapTransform.position;
+        CameraManager.DragCameraTo(mapPos);
     }
 
     public MapController GetMapController(int mapID)
@@ -63,6 +72,12 @@ public class MapManager : TemporaryMonoSingleton<MapManager>
     public int GetTotalFoundItem()
     {
         return mapProgress.GetTotalFoundItem();
+    }
+
+    public MapController GetCurrentMap()
+    {
+        var currentProgress = GetCurrentMapProgress();
+        return mapList[currentProgress];
     }
 
     public int GetTotalItem()
