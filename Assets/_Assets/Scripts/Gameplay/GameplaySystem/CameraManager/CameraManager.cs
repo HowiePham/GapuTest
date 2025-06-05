@@ -14,4 +14,9 @@ public class CameraManager : TemporaryMonoSingleton<CameraManager>
     {
         cameraDragHandler.DragCameraTo(newPos);
     }
+
+    public void DragCameraToCurrentMap()
+    {
+        cameraDragHandler.DragCameraToCurrentMap();
+    }
 }

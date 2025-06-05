@@ -8,6 +8,7 @@ public class CameraDragHandler : MonoBehaviour
     [SerializeField] private bool isDragging;
     [SerializeField] private Vector3 dragStartPosition;
     [SerializeField] private float draggingEffectTime;
+    private MapManager MapManager => SingletonManager.MapManager;
 
     private void Start()
     {
@@ -53,6 +54,14 @@ public class CameraDragHandler : MonoBehaviour
     public void DragCameraTo(Vector2 newPos)
     {
         StartCoroutine(RunDraggingEffect(newPos));
+    }
+    
+    public void DragCameraToCurrentMap()
+    {
+        var currentMap = MapManager.GetCurrentMap();
+        var mapTransform = currentMap.transform;
+        var mapPos = mapTransform.position;
+        DragCameraTo(mapPos);
     }
 
     private IEnumerator RunDraggingEffect(Vector2 newPos)

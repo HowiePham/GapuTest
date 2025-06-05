@@ -3,7 +3,7 @@ using UnityEngine;
 public class MapUnlockPanelUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
-    private MapManager MapManager => SingletonManager.MapManager;
+    private CameraManager CameraManager => SingletonManager.CameraManager;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class MapUnlockPanelUI : MonoBehaviour
 
     public void GoToCurrentMap()
     {
-        MapManager.GoToCurrentMap();
+        CameraManager.DragCameraToCurrentMap();
     }
 
     private void EnablePanel()
