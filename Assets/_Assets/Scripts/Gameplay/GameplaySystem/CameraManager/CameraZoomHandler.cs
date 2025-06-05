@@ -56,14 +56,14 @@ public class CameraZoomHandler : MonoBehaviour
 
     private float CalculateMultiTouchDiff()
     {
-        var touchZero = Input.GetTouch(FirstTouchIndex);
-        var touchOne = Input.GetTouch(SecondTouchIndex);
+        var firstTouch = Input.GetTouch(FirstTouchIndex);
+        var secTouch = Input.GetTouch(SecondTouchIndex);
 
-        var touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-        var touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+        var firstTouchPrevPos = firstTouch.position - firstTouch.deltaPosition;
+        var secTouchPrevPos = secTouch.position - secTouch.deltaPosition;
 
-        var prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-        var touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+        var prevTouchDeltaMag = (firstTouchPrevPos - secTouchPrevPos).magnitude;
+        var touchDeltaMag = (firstTouch.position - secTouch.position).magnitude;
         var deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
         return deltaMagnitudeDiff;
     }
