@@ -7,6 +7,11 @@ public class Compass : MonoBehaviour
     [SerializeField] private ObjectVisual objectVisual;
     [SerializeField] private HiddenItem currentTarget;
 
+    private void OnEnable()
+    {
+        FollowCamera();
+    }
+
     public void Init(ToolType toolType)
     {
         var toolID = (int)toolType;
